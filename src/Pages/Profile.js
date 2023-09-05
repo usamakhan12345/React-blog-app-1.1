@@ -1,4 +1,4 @@
-import React, { useEffect, useState ,useRef} from "react";
+import React, { useEffect, useState ,useRef } from "react";
 import image from "../Images/person-circle.svg";
 import "./Pages.css";
 import Input from "antd/es/input/Input";
@@ -17,35 +17,35 @@ const Profile = () => {
   const [getData ,setGetData] = useState("");
   const[uplimgUrl,setuplimgUrl] = useState("")
 
-  const {user} = useContext(userId)
+
+  const {userid} = useContext(userId)
   
-  console.log(user)
+  console.log(userid)
   // console.log(userid)
   useEffect(()=>{
     const fetchData = async()=>{
       
-      const unsub = onSnapshot(doc(db, "blogusers", user.uid), (doc) => {
+      const unsub = onSnapshot(doc(db, "blogusers", userid), (doc) => {
         console.log("Current data: ", doc.data());
         setGetData(doc.data())
-
+        console.log(doc.data())
     });
     console.log(getData)
     }
     fetchData();
    
   },[]);
-    console.log(user.uid)
 
   const UpdateUserProfile =async()=>{
 
-      updatePassword(user.uid, newpass).then(() => {
+      updatePassword(userid, newpass).then(() => {
   console.log("pass update hogya")
       }).catch((error) => {
   console.log(error)  
 });
 
 
-      const washingtonRef = doc(db, "blogusers", user.uid);
+      const washingtonRef = doc(db, "blogusers", userid);
 
       // Set the "capital" field of the city 'DC'
       await updateDoc(washingtonRef, {
@@ -55,8 +55,8 @@ const Profile = () => {
       });
       Swal.fire({
         icon: 'success',
-        title: 'Sign Up',
-        text:   "User successfuly sign up",
+        title: 'Profile',
+        text:   "Profile Updated  successfuly ",
       })
     }
     const uploaduserImg = ()=>{

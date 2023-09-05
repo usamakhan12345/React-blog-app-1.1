@@ -39,7 +39,7 @@ const Login = () => {
     Swal.fire({
       icon: 'success',
       title: 'Sign Up',
-      text:   "User successfuly sign up",
+      text:   "User successfuly sign in",
     })
   console.log("data saved")
     setTimeout(() => {

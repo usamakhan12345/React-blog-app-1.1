@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext} from "react";
 import "./SignUp.css";
 import MyInput from "../Components/MyInput";
 import Button from "../Components/Button/Button";
@@ -6,19 +6,20 @@ import { NavLink } from "react-router-dom";
 import {auth, createUserWithEmailAndPassword , onAuthStateChanged , db , doc, setDoc} from "../Config/Firebase" 
 import {useNavigate} from "react-router-dom"
 import Swal from 'sweetalert2'
-
+import userId from "../Config/Context";
 
 
 
 const SignUp = () => {
   const navigate = useNavigate()
   const [isuserid , setIsUserId] = useState("")
-
+    const {setuserid} = useContext(userId)
   useEffect(()=>{
     onAuthStateChanged(auth, (user) => {
       if (user) {
        const uid = user.uid;
-        // console.log(uid)
+        console.log(uid)
+        setuserid(uid);
         setIsUserId(uid)
         navigate("/dashboardlogin")
       } else {

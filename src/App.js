@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { BrowserRouter, Routes ,Route} from 'react-router-dom'
 import Profile from './Pages/Profile'
 import Header from './Components/Header/Header'
@@ -13,10 +13,11 @@ import {auth, onAuthStateChanged ,doc, getDoc , db } from "./Config/Firebase"
 
 
 const App = () => {
-  const [userid , setuserid] = useState("")
-  const [ user , setUser ]  = useState({})
-  // const navigate = useNavigate()
 
+  const [userid , setuserid] = useState("usama")
+  // const [ user , setUser ]  = useState({})
+  // const navigate = useNavigate()
+    console.log(userid)
   return (
       <>
       <userId.Provider value={{userid,setuserid}}>
@@ -26,7 +27,7 @@ const App = () => {
       if (user) {
         // console.log(user)
        const uid = user.uid;
-        setuserid(user)
+        setuserid(uid)
         // navigate("/dashboardlogin")
       } else {
           console.log("user not found")        

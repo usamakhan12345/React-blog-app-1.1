@@ -45,12 +45,13 @@ const Dashboardlogin = () => {
     Getdata();
   }, []);
 
-  console.log("signupdata---->", signUpdata.firstName);
+  console.log("signupdata---->", signUpdata.image);
   const publishBlogs = async () => {
     try {
       const docRef = await addDoc(collection(db, "blogsdata"), {
         ...blogData,
         firstName: signUpdata.firstName,
+        image : signUpdata.image ? signUpdata.imag : image
       });
 
       console.log("blogs data are saved");
@@ -83,6 +84,7 @@ const Dashboardlogin = () => {
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
           userData.push(doc.data());
+          console.log(userData)
           setgetUserData(userData);
         });
       });
@@ -102,9 +104,10 @@ const Dashboardlogin = () => {
     userid: currid,
     date: formattedDate,
     time: formattedTime,
+    
   };
-  // console.log(getUserData)
-
+  console.log("blogData---->", blogData);
+  console.log("getUserData--->",getUserData)
   return (
     <>
       <Header />
@@ -152,10 +155,11 @@ const Dashboardlogin = () => {
                   <div>
                     <h1 className="mt-3">{v.title}</h1>
                     <h5 className="mx-2">{v.date}</h5>
-                    <h5 className="mx-2">v.time</h5>
+                    <h5 className="mx-2">{v.time}</h5>
                   </div>
                 </div>
                 <div className="mt-4">{v.blog}</div>
+                <Button className="deleteBtn" value={"delete"} btnstyle="bg-danger text-light "/>
               </div>
             </div>
           </div>

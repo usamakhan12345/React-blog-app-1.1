@@ -26,3 +26,6 @@ input{
     background-color: #D6E4FF;
     color: blue;
 }
+.deleteBtn{
+    border: 2px solid red !important;
+}
