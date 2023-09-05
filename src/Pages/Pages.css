@@ -1,0 +1,28 @@
+body{
+    background-color: #EBF2FF;
+}
+
+#profilepic{
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+}
+.profileName{
+    position: relative;
+    margin-left: 70px;
+    max-width: 200px;
+}
+
+label{
+    color: blue;
+}
+input{
+    border: 2px,2px,2px,2px blue
+}
+.login-main {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.blogContainer{
+    background-color: #D6E4FF;
+    color: blue;
+}
