@@ -1,7 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth , createUserWithEmailAndPassword , signInWithEmailAndPassword ,  onAuthStateChanged  , signOut ,updatePassword} from "firebase/auth";
-import { getFirestore , doc, setDoc , addDoc ,collection, serverTimestamp , Timestamp , query, where, onSnapshot ,getDoc , getDocs ,  updateDoc } from "firebase/firestore";
+import { getAuth , createUserWithEmailAndPassword , signInWithEmailAndPassword ,  onAuthStateChanged  , signOut ,updatePassword } from "firebase/auth";
+import { getFirestore , doc, setDoc , addDoc ,collection, serverTimestamp , Timestamp , query, where, onSnapshot ,getDoc , getDocs ,  updateDoc  } from "firebase/firestore";
+import { getStorage ,  ref, uploadBytesResumable, getDownloadURL ,  } from "firebase/storage";
 
 
 
@@ -22,6 +23,7 @@ import { getFirestore , doc, setDoc , addDoc ,collection, serverTimestamp , Time
       const auth = getAuth(app);
       const db = getFirestore(app);
       console.log(auth)
+      const storage = getStorage(app);
 
 
-export {auth , createUserWithEmailAndPassword , signInWithEmailAndPassword , onAuthStateChanged , db , doc, setDoc , signOut , addDoc ,collection , serverTimestamp, Timestamp , query, where, onSnapshot , getDoc , getDocs ,  updateDoc, updatePassword  };
+export {auth , createUserWithEmailAndPassword , signInWithEmailAndPassword , onAuthStateChanged , db , doc, setDoc , signOut , addDoc ,collection , serverTimestamp, Timestamp , query, where, onSnapshot , getDoc , getDocs ,  updateDoc, updatePassword , getStorage ,  ref, uploadBytesResumable, getDownloadURL , storage ,getAuth};

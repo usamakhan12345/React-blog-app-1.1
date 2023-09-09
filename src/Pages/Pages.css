@@ -29,3 +29,9 @@ input{
 .deleteBtn{
     border: 2px solid red !important;
 }
+.name {
+    color: #22a6b3 !important;
+}
+.mainBlogDiv{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

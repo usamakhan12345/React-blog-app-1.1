@@ -7,6 +7,7 @@ import {auth, createUserWithEmailAndPassword , onAuthStateChanged , db , doc, se
 import {useNavigate} from "react-router-dom"
 import Swal from 'sweetalert2'
 import userId from "../Config/Context";
+import Header from "../Components/Header/Header";
 
 
 
@@ -23,7 +24,8 @@ const SignUp = () => {
         setIsUserId(uid)
         navigate("/dashboardlogin")
       } else {
-          console.log("user not found")        
+          console.log("user not found")  
+
       }
     });
   } )
@@ -86,7 +88,8 @@ const SignUp = () => {
     console.log(formData)
   }
   return (
-    <>
+    <>  
+      <Header/>
       <div className="container-fluid mt-3 main justify-content-center  ">
         <div className="row justify-content-center ">
           <div className=" col-sm-4 col-md-8 col-lg-3 loginContain border border-1 border-primary ">

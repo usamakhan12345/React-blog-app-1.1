@@ -3,11 +3,12 @@ import MyInput from "../Components/MyInput";
 import Button from "../Components/Button/Button";
 import "./SignUp.css";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
-import {signInWithEmailAndPassword,auth} from "../Config/Firebase"
+import { useState , useEffect } from "react";
+import {signInWithEmailAndPassword,auth , onAuthStateChanged} from "../Config/Firebase"
 import Swal from 'sweetalert2'
 import {AiOutlineMail } from "react-icons/ai"
 import { useNavigate } from "react-router-dom";
+import Header from "../Components/Header/Header";
 
 const Login = () => {
   const navigate = useNavigate()
@@ -23,6 +24,20 @@ const Login = () => {
   // const[emailpass , setemailpass] =useState(initailemailpass)
   const [formData, setFormData] = useState(initialFormData);
 
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+       const uid = user.uid;
+        console.log(uid)
+        // setuserid(uid);
+        // setIsUserId(uid)
+        navigate("/dashboardlogin")
+      } else {
+          console.log("user not found")  
+
+      }
+    });
+  } )
 
 
   const userLogin = ()=>{
@@ -66,6 +81,8 @@ const Login = () => {
   }
   return (
     <>
+      <Header/>
+
       <div className="container container-fluid mt-3 justify-content-center  ">
         <div className="row justify-content-center ">
           <div className="col-xs-4 col-md-6 col-lg-6 loginContain1 border border-1 border-primary login-main  ">
@@ -117,7 +134,7 @@ const Login = () => {
 
                   <br />
                 Don't have an account ?
-                <NavLink to={"/"}>SignUp</NavLink>
+                <NavLink to={"/signup"}>SignUp</NavLink>
               </h5>
             </div>
           </div>
